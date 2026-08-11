@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rhea Verma · Data Analyst</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,900;1,9..144,500;1,9..144,600&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#14171F;
+    --ink-soft:#4B5160;
+    --paper:#EDEFF2;
+    --card:#FFFFFF;
+    --line:#D9DCE2;
+    --signal:#FF4B3E;
+    --signal-blue:#2F6FED;
+    --signal-yellow:#FFC53D;
+    --radius:14px;
+  }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto;} *{animation-duration:0.001ms !important; transition-duration:0.001ms !important;}}
+
+  body{
+    font-family:'Inter',sans-serif;
+    background:var(--paper);
+    color:var(--ink);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  a{color:inherit;}
+  img{max-width:100%;display:block;}
+
+  .wrap{max-width:1180px;margin:0 auto;padding:0 32px;}
+  @media (max-width:640px){.wrap{padding:0 20px;}}
+
+  .eyebrow{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12px;
+    letter-spacing:.06em;
+    text-transform:uppercase;
+    color:var(--ink-soft);
+  }
+  .eyebrow em{font-style:normal;color:var(--signal);}
+
+  h1,h2,h3{font-family:'Fraunces',serif;font-weight:700;letter-spacing:-0.01em;color:var(--ink);}
+
+  /* ===== NAV ===== */
+  .site-nav{
+    position:sticky;top:0;z-index:200;
+    background:rgba(237,239,242,0.88);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-inner{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:18px 0;
+  }
+  .nav-mark{
+    font-family:'Fraunces',serif;font-weight:700;font-size:19px;
+    display:flex;align-items:baseline;gap:8px;
+  }
+  .nav-mark .dot{color:var(--signal);}
+  .nav-links{display:flex;gap:28px;list-style:none;font-size:14px;font-weight:500;}
+  .nav-links a{text-decoration:none;color:var(--ink-soft);transition:color .15s;position:relative;}
+  .nav-links a:hover, .nav-links a:focus-visible{color:var(--ink);}
+  .nav-links a::after{
+    content:"";position:absolute;left:0;bottom:-4px;height:2px;width:0;background:var(--signal);
+    transition:width .2s;
+  }
+  .nav-links a:hover::after{width:100%;}
+  .nav-cta{
+    font-family:'IBM Plex Mono',monospace;font-size:12.5px;font-weight:500;
+    border:1px solid var(--ink);border-radius:100px;padding:8px 16px;
+    text-decoration:none;transition:background .15s, color .15s;
+  }
+  .nav-cta:hover{background:var(--ink);color:var(--paper);}
+  .nav-toggle{display:none;background:none;border:none;cursor:pointer;padding:4px;}
+  .nav-toggle span{display:block;width:22px;height:2px;background:var(--ink);margin:5px 0;}
+  @media (max-width:760px){
+    .nav-links{display:none;}
+    .nav-toggle{display:block;}
+  }
+
+  /* ===== HERO ===== */
+  .hero{
+    background:var(--ink);
+    color:#F4F4F5;
+    padding:88px 0 96px;
+    overflow:hidden;
+    position:relative;
+  }
+  .hero-grid{
+    display:grid;
+    grid-template-columns:1.35fr 1fr;
+    gap:56px;
+    align-items:end;
+  }
+  @media (max-width:900px){.hero-grid{grid-template-columns:1fr;}}
+  .hero-eyebrow{
+    font-family:'IBM Plex Mono',monospace;font-size:12.5px;letter-spacing:.08em;
+    text-transform:uppercase;color:var(--signal-yellow);margin-bottom:22px;
+    display:flex;align-items:center;gap:10px;
+  }
+  .hero-eyebrow .pulse{
+    width:7px;height:7px;border-radius:50%;background:var(--signal-yellow);
+    animation:pulse 1.8s ease-in-out infinite;
+  }
+  @keyframes pulse{0%,100%{opacity:1;}50%{opacity:.25;}}
+  .hero-name{
+    font-size:clamp(20px,2.4vw,26px);
+    font-weight:600;
+    letter-spacing:.01em;
+    color:#fff;
+    margin-bottom:8px;
+  }
+  .hero h1{
+    font-size:clamp(40px,6vw,72px);
+    line-height:1.02;
+    font-weight:700;
+    color:#fff;
+  }
+  .hero h1 .accent{color:var(--signal);font-style:italic;font-weight:600;}
+  .hero-sub{
+    margin-top:24px;
+    font-size:19px;
+    max-width:52ch;
+    color:#C7CAD3;
+    font-weight:400;
+  }
+  .hero-actions{display:flex;gap:14px;margin-top:36px;flex-wrap:wrap;}
+  .btn{
+    font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:500;
+    padding:13px 22px;border-radius:100px;text-decoration:none;
+    display:inline-flex;align-items:center;gap:8px;
+    transition:transform .15s ease, box-shadow .15s ease;
+  }
+  .btn:hover{transform:translateY(-2px);}
+  .btn-solid{background:var(--signal);color:#fff;}
+  .btn-solid:hover{box-shadow:0 8px 22px rgba(255,75,62,0.35);}
+  .btn-outline{border:1px solid rgba(255,255,255,0.35);color:#fff;}
+  .btn-outline:hover{border-color:#fff;}
+
+  /* console ticker card */
+  .console{
+    background:#0B0D13;
+    border:1px solid rgba(255,255,255,0.09);
+    border-radius:var(--radius);
+    padding:22px 22px 20px;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:13px;
+    box-shadow:0 20px 60px rgba(0,0,0,0.35);
+  }
+  .console-head{
+    display:flex;gap:6px;margin-bottom:16px;
+  }
+  .console-head span{width:9px;height:9px;border-radius:50%;background:rgba(255,255,255,0.18);}
+  .console-title{
+    color:rgba(255,255,255,0.35);font-size:11px;letter-spacing:.04em;
+    margin-bottom:14px;text-transform:uppercase;
+  }
+  .console-line{
+    min-height:64px;
+    color:#E6E8ED;
+    line-height:1.7;
+  }
+  .console-line .k{color:var(--signal-blue);}
+  .console-line .v{color:var(--signal-yellow);}
+  .console-line .comment{color:rgba(255,255,255,0.4);}
+  .console-cursor{display:inline-block;width:7px;height:14px;background:var(--signal);vertical-align:-2px;animation:blink 1s step-start infinite;}
+  @keyframes blink{50%{opacity:0;}}
+
+  /* ===== SECTION SHELL ===== */
+  section{padding:96px 0;}
+  .section-head{
+    display:flex;justify-content:space-between;align-items:flex-end;
+    gap:24px;margin-bottom:48px;flex-wrap:wrap;
+  }
+  .section-head h2{font-size:clamp(28px,3.6vw,40px);}
+  .section-head p{color:var(--ink-soft);max-width:44ch;font-size:15.5px;}
+
+  .reveal{opacity:0;transform:translateY(18px);transition:opacity .6s ease, transform .6s ease;}
+  .reveal.in{opacity:1;transform:translateY(0);}
+
+  /* ===== ABOUT ===== */
+  .about{background:var(--card);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+  .about-grid{display:grid;grid-template-columns:0.9fr 1.1fr;gap:64px;}
+  @media (max-width:860px){.about-grid{grid-template-columns:1fr;gap:36px;}}
+  .about-lede{
+    font-family:'Fraunces',serif;font-weight:500;font-style:italic;
+    font-size:clamp(22px,2.6vw,30px);line-height:1.35;color:var(--ink);
+  }
+  .about-body p{margin-bottom:16px;color:var(--ink-soft);font-size:16px;}
+  .about-body strong{color:var(--ink);font-weight:600;}
+  .chip-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:24px;}
+  .chip{
+    font-family:'IBM Plex Mono',monospace;font-size:12px;
+    border:1px solid var(--line);border-radius:100px;padding:6px 13px;
+    color:var(--ink-soft);background:var(--paper);
+  }
+
+  /* ===== EXPERIENCE (feature stories) ===== */
+  .story{
+    display:grid;grid-template-columns:280px 1fr;gap:44px;
+    padding:40px 0;border-top:1px solid var(--line);
+  }
+  .story:last-child{border-bottom:1px solid var(--line);}
+  @media (max-width:820px){.story{grid-template-columns:1fr;gap:18px;}}
+  .story-meta .org{
+    font-family:'Fraunces',serif;font-weight:700;font-size:22px;margin-bottom:6px;
+  }
+  .story-meta .role{color:var(--ink-soft);font-size:14px;margin-bottom:16px;}
+  .story-meta .eyebrow{line-height:1.7;}
+  .story-title{
+    font-size:clamp(20px,2.4vw,26px);margin-bottom:14px;font-weight:600;
+  }
+  .story-body p{color:var(--ink-soft);margin-bottom:14px;font-size:15.5px;}
+  .story-result{
+    margin-top:18px;padding:16px 18px;border-left:3px solid var(--signal);
+    background:var(--paper);border-radius:0 8px 8px 0;font-size:14.5px;
+  }
+  .story-result .lbl{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--signal);display:block;margin-bottom:6px;}
+  .story-links{margin-top:20px;display:flex;gap:16px;flex-wrap:wrap;}
+  .story-links a{
+    font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:500;
+    text-decoration:none;border-bottom:1px solid var(--ink);padding-bottom:2px;
+    display:inline-flex;align-items:center;gap:6px;
+  }
+  .story-links a:hover{color:var(--signal);border-color:var(--signal);}
+
+  /* ===== PROJECTS GRID ===== */
+  .proj-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px;}
+  @media (max-width:760px){.proj-grid{grid-template-columns:1fr;}}
+  .card{
+    background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+    padding:28px 26px;position:relative;overflow:hidden;
+    transition:border-color .2s, transform .2s, box-shadow .2s;
+  }
+  .card:hover{border-color:var(--ink);transform:translateY(-3px);box-shadow:0 14px 30px rgba(20,23,31,0.08);}
+  .card .eyebrow{margin-bottom:14px;}
+  .card h3{font-size:20px;margin-bottom:10px;line-height:1.3;}
+  .card p{color:var(--ink-soft);font-size:14.5px;margin-bottom:16px;}
+  .card .stat-strip{
+    display:flex;gap:16px;padding-top:14px;border-top:1px dashed var(--line);
+    font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--ink-soft);
+  }
+  .card .stat-strip b{color:var(--ink);display:block;font-size:15px;font-family:'Fraunces',serif;}
+  .card-links{display:flex;gap:14px;flex-wrap:wrap;margin-top:14px;}
+  .card-links a{
+    font-family:'IBM Plex Mono',monospace;font-size:12.5px;font-weight:500;
+    text-decoration:none;border-bottom:1px solid var(--ink);padding-bottom:1px;
+  }
+  .card-links a:hover{color:var(--signal);border-color:var(--signal);}
+
+  /* ===== SKILLS ===== */
+  .skills{background:var(--ink);color:#fff;}
+  .skills .section-head p{color:#9EA3B0;}
+  .skills .section-head h2{color:#fff;}
+  .skill-cols{display:grid;grid-template-columns:repeat(3,1fr);gap:36px;}
+  @media (max-width:820px){.skill-cols{grid-template-columns:1fr;}}
+  .skill-col h4{
+    font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.06em;
+    text-transform:uppercase;color:var(--signal-yellow);margin-bottom:16px;
+  }
+  .skill-col ul{list-style:none;}
+  .skill-col li{
+    padding:10px 0;border-top:1px solid rgba(255,255,255,0.1);
+    font-size:15px;color:#E4E6EB;
+  }
+  .skill-col li:last-child{border-bottom:1px solid rgba(255,255,255,0.1);}
+
+  /* ===== CONTACT ===== */
+  .contact{text-align:left;}
+  .contact-grid{
+    display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:32px;
+  }
+  .contact h2{font-size:clamp(32px,5vw,56px);max-width:14ch;}
+  .contact-links{display:flex;flex-direction:column;gap:14px;}
+  .contact-links a{
+    font-family:'IBM Plex Mono',monospace;font-size:16px;text-decoration:none;
+    display:flex;align-items:center;gap:10px;
+  }
+  .contact-links a:hover{color:var(--signal);}
+  .contact-links .lbl{font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-soft);}
+
+  footer{
+    border-top:1px solid var(--line);padding:26px 0;
+    font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--ink-soft);
+    display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;
+  }
+</style>
+</head>
+<body>
+
+<nav class="site-nav">
+  <div class="wrap nav-inner">
+    <a href="#top" class="nav-mark">Rhea Verma<span class="dot">.</span></a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#skills">Skills</a></li>
+    </ul>
+    <a href="#contact" class="nav-cta">Get in touch</a>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="hero-eyebrow"><span class="pulse"></span>B.S. Statistics + Info Systems Minor · UC Riverside '26</div>
+      <p class="hero-name">Rhea Verma</p>
+      <h1>Data Analyst turning<br>messy records into<br><span class="accent">decisions.</span></h1>
+      <p class="hero-sub">I clean the data no one wants to touch, model it honestly, and build the dashboard that makes a stakeholder trust the answer. Recent work spans healthcare policy, workforce sentiment, and applied statistics.</p>
+      <div class="hero-actions">
+        <a href="#projects" class="btn btn-solid">View projects ↓</a>
+        <a href="#contact" class="btn btn-outline">Contact me</a>
+      </div>
+    </div>
+    <div class="console">
+      <div class="console-head"><span></span><span></span><span></span></div>
+      <div class="console-title">// live output</div>
+      <div class="console-line" id="ticker"></div>
+    </div>
+  </div>
+</header>
+
+<section class="about" id="about">
+  <div class="wrap about-grid">
+    <div>
+      <p class="about-lede">"I've been finding patterns in messy information since long before it was my job: my Spotify Wrapped, my perfume shelf, even my old dream journal. Turning noise into a signal for a living just feels like solving the same puzzle, on purpose."</p>
+    </div>
+    <div class="about-body">
+      <p>I graduated from UC Riverside in <strong>June 2026 with a B.S. in Statistics and a minor in Information Systems</strong>, a combination that means I'm equally comfortable in the math behind a model and the systems that data actually lives in.</p>
+      <p>What pulls me into data analytics is that moment a pile of disconnected numbers turns into a clear story: the connection nobody had drawn yet, the pattern that explains why a system is underperforming, the one variable a client didn't think to check. I'm not attached to a single industry: I've worked on healthcare policy and workforce sentiment so far, and I just want to be in the room where the data gets to solve something real.</p>
+      <p>Across two data analytics externships and a run of applied statistics coursework, I've used <strong>Python, R, SQL, Excel, and Power BI</strong> to move from raw records to a model to a dashboard a non-technical stakeholder can actually use, and I document my methods along the way so the work can be audited or reproduced.</p>
+      <p style="margin-top:24px;">Off the clock, I bring the same instinct to less official projects: I check my <strong>Last.fm</strong> stats more than I'd like to admit and treat Spotify Wrapped like my Super Bowl, I collect <strong>perfume</strong> with an eye for how individual notes interact, and I once spent months journaling my dreams every morning, systematically testing induction methods (WILD, MILD, WBTB) until I found the one that actually worked. Different subject, same instinct: collect the data, look for the pattern, test until something clicks.</p>
+      <p style="margin-top:16px;">I'm currently looking for a full-time <strong>Data Analyst</strong> role, open to any industry, as long as I get to work with data.</p>
+      <div class="chip-row">
+        <span class="chip">Python</span><span class="chip">R</span><span class="chip">SQL</span>
+        <span class="chip">Power BI</span><span class="chip">Excel</span><span class="chip">Chart.js</span>
+        <span class="chip">Regression Modeling</span><span class="chip">A/B & DiD Analysis</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Externship work</h2>
+      <p>Two data analytics externships: one in health policy, one in workforce sentiment, each ending in a real deliverable for a stakeholder audience.</p>
+    </div>
+
+    <div class="story reveal">
+      <div class="story-meta">
+        <div class="org">TruBridge</div>
+        <div class="role">Healthcare Data Analytics Extern</div>
+        <p class="eyebrow"><em>58</em> CA counties · Python, pandas, Chart.js · Difference-in-Differences</p>
+      </div>
+      <div class="story-body">
+        <h3 class="story-title">Did California's 2022 Medi-Cal expansion actually improve diabetes outcomes, or just improve detection?</h3>
+        <p>I gathered county-level Medi-Cal enrollment, claims, and diagnosis data across all 58 California counties from multiple state and public health sources, standardizing formats and cross-referencing entries to catch discrepancies before running any analysis.</p>
+        <p>I applied a Difference-in-Differences model in Python to isolate the policy's effect on diagnosis rates, tested the parallel-trends assumption the design depends on, and checked my results against existing public health literature before trusting them.</p>
+        <div class="story-result">
+          <span class="lbl">What I found</span>
+          The rural–urban diabetes diagnosis gap narrowed after expansion, but the enrollment–outcome relationship itself wasn't statistically significant (p = 0.588). The likelier story: expansion increased <em>detection</em>, not underlying health outcomes, an important distinction for anyone deciding where to target follow-up investment.
+        </div>
+        <div class="story-links">
+          <a href="https://0p3ny0urr1c3.github.io/TruBridge/" target="_blank" rel="noopener">View live dashboard →</a>
+          <a href="https://gamma.app/docs/Do-Coverage-Expansions-Improve-Health-Outcomes-in-Rural-Communiti-c11iab5eg86vlaz" target="_blank" rel="noopener">View presentation →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="story reveal">
+      <div class="story-meta">
+        <div class="org">Amazon</div>
+        <div class="role">People Analytics Extern</div>
+        <p class="eyebrow">~250 reviews + 30 transcripts · Python, NLTK, TextBlob</p>
+      </div>
+      <div class="story-body">
+        <h3 class="story-title">Where is burnout actually costing Amazon fulfillment centers the most?</h3>
+        <p>I collected and cleaned unstructured employee feedback from roughly 250 Glassdoor reviews and 30 YouTube video transcripts, standardizing the text with Python, NLTK, and TextBlob so it could be reliably coded into consistent themes and compared across sources.</p>
+        <p>I ran sentiment analysis and a root-cause/priority scoring framework across three worker segments (full-time, part-time, and specialized roles) to find where an intervention would have the most leverage.</p>
+        <div class="story-result">
+          <span class="lbl">What I found</span>
+          Full-time warehouse associates scored highest on every risk dimension, driven mainly by safety and pay & benefits mentions. I translated that into a two-week pilot proposal, a floor-level "pacing credit" system, with a defined success metric and a binary go/no-go decision point, presented to a leadership audience.
+        </div>
+        <div class="story-links">
+          <a href="https://colab.research.google.com/drive/1UguEkS1LpEE_ioFGc-sLGwHvCkXkF7Jz?ouid=101495486766980525997" target="_blank" rel="noopener">View analysis notebook (Python) →</a>
+          <a href="https://docs.google.com/presentation/d/1MDYPiWh5oNaKlwBVEx-EYD5vvtGk3bQprfF7Pm56mqc/edit?usp=drivesdk" target="_blank" rel="noopener">View final presentation →</a>
+          <a href="https://drive.google.com/file/d/1TPxEGAMzdza54hODwQlMrL5Ttgu70RuT/view?usp=drivesdk" target="_blank" rel="noopener">View sentiment breakdown →</a>
+          <a href="https://drive.google.com/file/d/1Bi3bNR5Py2NASLlXYKU2-CgJD4V6FMyN/view?usp=drivesdk" target="_blank" rel="noopener">View friction map →</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section id="projects" style="background:var(--card);border-top:1px solid var(--line);border-bottom:1px solid var(--line);">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Coursework projects</h2>
+      <p>Applied statistics work from my B.S.: regression modeling, survey design, and process control, each on real or realistically-collected data.</p>
+    </div>
+    <div class="proj-grid">
+
+      <div class="card reveal">
+        <p class="eyebrow">STAT 171 · R · General Statistical Models</p>
+        <h3>Modeling Stormwater Overflow Events</h3>
+        <p>Worked with a group to model stormwater overflow events for an urban drainage system, using general statistical modeling techniques in R to identify the conditions and predictors associated with overflow occurrence and inform drainage management.</p>
+        <div class="stat-strip"><div><b>4</b>team members</div><div><b>R</b>tooling</div></div>
+        <div class="card-links">
+          <a href="https://rpubs.com/moon127/1452050" target="_blank" rel="noopener">View final report (R) →</a>
+          <a href="https://docs.google.com/document/d/1_4keSp4-PaGpxuq0V2z8H9ReqayXilDN2_OTsyRRQVM/edit?usp=drive_link" target="_blank" rel="noopener">View written report →</a>
+        </div>
+      </div>
+
+      <div class="card reveal">
+        <p class="eyebrow">STAT 170 · R · Multiple Regression</p>
+        <h3>Modeling Life Expectancy Across 21 Predictors</h3>
+        <p>Built and refined multiple linear regression models on a multivariate public health dataset, testing variable transformations and comparing candidate models by residual analysis, adjusted R², and RMSE to land on the most stable, interpretable fit.</p>
+        <div class="stat-strip"><div><b>21</b>predictors</div><div><b>R</b>tooling</div></div>
+        <div class="card-links">
+          <a href="https://rpubs.com/moon127/1452043" target="_blank" rel="noopener">View individual EDA →</a>
+          <a href="https://rpubs.com/moon127/1452045" target="_blank" rel="noopener">View group report →</a>
+          <a href="https://docs.google.com/presentation/d/e/2PACX-1vTghl-oqqgj-wdfShz8FzJslPAlDRS9_USMjyk8Z9VHrzDF0_Zu8oIyGkwWz6GjpXfxg_brjEXN3y2r/pub?start=false&loop=false&delayms=3000" target="_blank" rel="noopener">View presentation →</a>
+        </div>
+      </div>
+
+      <div class="card reveal">
+        <p class="eyebrow">STAT 167 · R, tidyverse · nycflights</p>
+        <h3>NYC Flight Punctuality, 2013 vs. 2023</h3>
+        <p>Analyzed departure and arrival delays across JFK, LGA, and EWR by hour, month, and airline, then fit a linear model to test whether airport and year predict arrival delay, and found they barely do (adj. R² = 0.0024), pointing to unmeasured operational factors.</p>
+        <div class="stat-strip"><div><b>2</b>years compared</div><div><b>3</b>NYC airports</div></div>
+        <div class="card-links">
+          <a href="https://drive.google.com/file/d/1yM9XRoZOotGil0HNmtzMHEblOHHIkiDU/view" target="_blank" rel="noopener">View individual analysis →</a>
+          <a href="https://drive.google.com/file/d/1STwnAP4Pz4TmEAqiXjiG95kEhob_W17Y/view?usp=sharing" target="_blank" rel="noopener">View group report →</a>
+          <a href="https://docs.google.com/presentation/d/e/2PACX-1vS5B_D-bk71fTwZaJLaCqHYK9VrbkJ0e7mCnI5ZY8SVFoxwRTYVpDSjSxlenMqJxwr4i2xwb-KeHwCY/pub?start=false&loop=false&delayms=3000" target="_blank" rel="noopener">View presentation →</a>
+        </div>
+      </div>
+
+      <div class="card reveal">
+        <p class="eyebrow">STAT 011 · R · Statistical Modeling</p>
+        <h3>NBA Player Stats Analysis</h3>
+        <p>Collaborated on a group project analyzing NBA player statistics to investigate what drives individual player and team performance efficiency, building statistical models in R and comparing predictors to identify which stats matter most.</p>
+        <div class="stat-strip"><div><b>4</b>team members</div><div><b>NBA</b>player data</div></div>
+        <div class="card-links">
+          <a href="https://docs.google.com/document/d/1XLQGVIcGbhue1vUX0YDPs9rDes-QMNOsraPGUBUDP_Y/edit?usp=sharing" target="_blank" rel="noopener">View final report →</a>
+          <a href="https://docs.google.com/presentation/d/e/2PACX-1vT51wMY2IWXRiYZM1vnPygGBk13dDJNzR2diATYNWL5XtNFxqTRdyRlhizShEZFqvD3K7JuIiut6Cnj/pub?start=false&loop=false&delayms=3000" target="_blank" rel="noopener">View presentation →</a>
+        </div>
+      </div>
+
+      <div class="card reveal">
+        <p class="eyebrow">STAT 130 · Survey Design · R</p>
+        <h3>Stratified Sampling of Campus Transportation</h3>
+        <p>Designed and fielded an original survey on commuting patterns, then applied stratified sampling with post-stratification weighting to correct for uneven response across class standing, reconciling results against the true UCR population.</p>
+        <div class="stat-strip"><div><b>74</b>responses</div><div><b>6</b>strata</div></div>
+        <div class="card-links">
+          <a href="https://drive.google.com/file/d/1WW5gneQarXe_Ok64AIMLztIWz2LmgpK6/view?usp=drivesdk" target="_blank" rel="noopener">View project report →</a>
+          <a href="https://docs.google.com/presentation/d/e/2PACX-1vSJKUQadWmNR-CghozvNSTnxChDtRzZy7SITN6QKBG4SDdGoeiBWo87vTCMm_Sw9SyPd_qinXccUoY-/pub?start=false&loop=false&delayms=3000" target="_blank" rel="noopener">View presentation →</a>
+        </div>
+      </div>
+
+      <div class="card reveal">
+        <p class="eyebrow">STAT 127 · Excel · Control Charts · Root Cause</p>
+        <h3>Quality Control: Coffee Bean Dispensing</h3>
+        <p>Investigated inconsistent bean dispensing in a coffee machine using control charts I built in Excel from the sample data, alongside Pareto analysis and a fishbone diagram to separate hardware issues from process issues, concluding the mechanism was miscalibrated and recommending maintenance over full replacement.</p>
+        <div class="stat-strip"><div><b>30</b>samples</div><div><b>Excel</b>control charts</div></div>
+        <div class="card-links">
+          <a href="https://drive.google.com/file/d/1SFqTzj77hZnNwKNMv5D8HvIrQcFyMkVs/view?usp=drivesdk" target="_blank" rel="noopener">View project report →</a>
+          <a href="https://docs.google.com/presentation/d/e/2PACX-1vTm5LgHIR18J35j3rQf_ZN8kxnlk2ahsBqnR-IHPHrP1ZSJo5K26canpVrJxVaacimRAZ8TX5oVcUir/pub?start=false&loop=false&delayms=3000" target="_blank" rel="noopener">View presentation →</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="skills" id="skills">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Tools & methods</h2>
+      <p>What I reach for depending on the problem.</p>
+    </div>
+    <div class="skill-cols">
+      <div class="skill-col">
+        <h4>Languages & Tools</h4>
+        <ul>
+          <li>Python (pandas, NLTK, TextBlob)</li>
+          <li>R (tidyverse, ggplot2, R Markdown)</li>
+          <li>SQL</li>
+          <li>Excel & Power BI</li>
+          <li>Chart.js / dashboard building</li>
+        </ul>
+      </div>
+      <div class="skill-col">
+        <h4>Statistical Methods</h4>
+        <ul>
+          <li>Regression modeling</li>
+          <li>Difference-in-Differences</li>
+          <li>Hypothesis testing</li>
+          <li>Stratified sampling & weighting</li>
+          <li>Control charts / process QC</li>
+        </ul>
+      </div>
+      <div class="skill-col">
+        <h4>How I work</h4>
+        <ul>
+          <li>Multi-source data reconciliation</li>
+          <li>Documented, reproducible methods</li>
+          <li>Stakeholder-facing dashboards</li>
+          <li>Clear written & presented findings</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap contact">
+    <div class="contact-grid">
+      <h2>Let's talk data.</h2>
+      <div class="contact-links">
+        <a href="mailto:rheausa2@gmail.com"><span class="lbl">Email</span></a>
+        <a href="mailto:rheausa2@gmail.com">rheausa2@gmail.com →</a>
+        <a href="https://www.linkedin.com/in/rhea-verma-a95ab727b" target="_blank" rel="noopener">linkedin.com/in/rhea-verma →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap footer" style="display:flex;justify-content:space-between;width:100%;">
+    <span>Rhea Verma · Data Analyst Portfolio</span>
+    <span>Built with real project data</span>
+  </div>
+</footer>
+
+<script>
+  // mobile nav could expand here if needed later
+
+  // ticker in hero console
+  const lines = [
+    '<span class="k">model</span>: DiD · <span class="k">p</span>=<span class="v">0.588</span> <span class="comment">// not significant</span>',
+    '<span class="k">counties</span>=<span class="v">58</span> <span class="comment">// reconciled from 4 sources</span>',
+    '<span class="k">reviews</span>=<span class="v">250</span>, <span class="k">transcripts</span>=<span class="v">30</span> <span class="comment">// NLP coded</span>',
+    '<span class="k">segment</span>=<span class="v">"full-time"</span> <span class="comment">// highest priority score</span>',
+    '<span class="k">survey_n</span>=<span class="v">74</span> <span class="comment">// stratified + post-weighted</span>',
+    '<span class="k">model</span>: OLS · <span class="k">adj_R2</span>=<span class="v">0.0024</span> <span class="comment">// flight delay</span>',
+  ];
+  const el = document.getElementById('ticker');
+  let i = 0;
+  function showLine(){
+    el.style.opacity = 0;
+    setTimeout(()=>{
+      el.innerHTML = lines[i] + '<span class="console-cursor"></span>';
+      el.style.opacity = 1;
+      i = (i+1) % lines.length;
+    }, 250);
+  }
+  el.style.transition = 'opacity .25s ease';
+  showLine();
+  setInterval(showLine, 2800);
+
+  // scroll reveal
+  const observer = new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        entry.target.classList.add('in');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, {threshold:0.12});
+  document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+</script>
+
+</body>
+</html>
