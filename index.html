@@ -230,6 +230,10 @@
     display:inline-flex;align-items:center;gap:6px;
   }
   .story-links a:hover{color:var(--signal);border-color:var(--signal);}
+  .story-note{
+    margin-top:18px;font-family:'Fraunces',serif;font-style:italic;
+    color:var(--ink-soft);font-size:15px;
+  }
 
   /* ===== PROJECTS GRID ===== */
   .proj-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px;}
@@ -338,8 +342,8 @@
     </div>
     <div class="about-body">
       <p>I graduated from UC Riverside in <strong>June 2026 with a B.S. in Statistics and a minor in Information Systems</strong>, a combination that means I'm equally comfortable in the math behind a model and the systems that data actually lives in.</p>
-      <p>What draws me to data analytics is the moment a pile of disconnected numbers resolves into a clear story, a connection nobody had drawn yet, a pattern that explains why a system is underperforming, a variable a client hadn't thought to check. I'm not attached to a single industry. I've worked in healthcare policy and workforce sentiment so far, and I'm simply drawn to the room where data gets to solve something real.</p>
-      <p>Across two data analytics externships and a run of applied statistics coursework, I've used <strong>Python, R, SQL, Excel, and Power BI</strong> to move from raw records to a model to a dashboard a non-technical stakeholder can actually use, and I document my methods along the way so the work can be audited or reproduced.</p>
+      <p>What draws me to data analytics is the moment a pile of disconnected numbers resolves into a clear story, a connection nobody had drawn yet, a pattern that explains why a system is underperforming, a variable a client hadn't thought to check. I'm not attached to a single industry. I've worked in healthcare policy, workforce sentiment, and e-commerce so far, and I'm simply drawn to the room where data gets to solve something real.</p>
+      <p>Across three data analytics externships and a run of applied statistics coursework, I've used <strong>Python, R, SQL, Excel, and Power BI</strong> to move from raw records to a model to a dashboard a non-technical stakeholder can actually use, and I document my methods along the way so the work can be audited or reproduced.</p>
       <p style="margin-top:24px;">Off the clock, the same instinct shows up in smaller ways. I track my own listening habits closely enough to treat Spotify Wrapped like an annual audit, and I collect <strong>perfume</strong> with an eye for how individual notes interact over time. Different subject, same instinct, collect the data, look for the pattern, and see what holds up.</p>
       <p style="margin-top:16px;">I'm currently looking for a full-time <strong>Data Analyst</strong> role, open to any industry, as long as I get to work with data.</p>
       <div class="chip-row">
@@ -355,7 +359,7 @@
   <div class="wrap">
     <div class="section-head">
       <h2>Externship work</h2>
-      <p>Two data analytics externships, one in health policy and one in workforce sentiment, each ending in a real deliverable for a stakeholder audience.</p>
+      <p>Three data analytics externships, spanning health policy, workforce sentiment, and e-commerce database architecture, each ending in a real deliverable for a stakeholder audience.</p>
     </div>
 
     <div class="story reveal">
@@ -399,6 +403,21 @@
           <a href="https://drive.google.com/file/d/1TPxEGAMzdza54hODwQlMrL5Ttgu70RuT/view?usp=drivesdk" target="_blank" rel="noopener">View sentiment breakdown →</a>
           <a href="https://drive.google.com/file/d/1Bi3bNR5Py2NASLlXYKU2-CgJD4V6FMyN/view?usp=drivesdk" target="_blank" rel="noopener">View friction map →</a>
         </div>
+      </div>
+    </div>
+
+    <div class="story reveal">
+      <div class="story-meta">
+        <div class="org">Breaking Games</div>
+        <div class="role">SQL & Database Architecture Extern</div>
+        <p class="eyebrow">6 raw CSV exports · SQL · Relational Database Design · Claude-assisted workflow</p>
+      </div>
+      <div class="story-body">
+        <h3 class="story-title">Turning six raw e-commerce CSV exports into a queryable analytics database</h3>
+        <p>I designed and built a relational analytics database from scratch, structuring dimension, fact, and summary tables connected through primary and foreign keys to support downstream reporting and analysis.</p>
+        <p>I wrote SQL queries to trace the customer journey from first ad click to purchase, rank the product catalog by revenue contribution, and generate restock recommendations. I also cleaned and standardized hundreds of inconsistently labeled marketing traffic sources into unified channels, then investigated thousands of abandoned carts to flag likely bot-driven activity and get a cleaner read on marketing ROI and cart abandonment.</p>
+        <p>Throughout the project, I worked alongside Claude, briefing it on context, iterating on queries, and cross-checking results, while building a shareable HTML dashboard to present the recommendations to stakeholders.</p>
+        <p class="story-note">Project details and deliverables aren't public yet, but I'm happy to walk through the work directly.</p>
       </div>
     </div>
 
@@ -559,6 +578,7 @@
     '<span class="k">segment</span>=<span class="v">"full-time"</span> <span class="comment">// highest priority score</span>',
     '<span class="k">survey_n</span>=<span class="v">74</span> <span class="comment">// stratified + post-weighted</span>',
     '<span class="k">model</span>=<span class="v">OLS</span> · <span class="k">adj_R2</span>=<span class="v">0.0024</span> <span class="comment">// flight delay</span>',
+    '<span class="k">csv_exports</span>=<span class="v">6</span> <span class="comment">// normalized into relational DB</span>',
   ];
   const el = document.getElementById('ticker');
   let i = 0;
